@@ -15,11 +15,13 @@ import java.util.ArrayList;
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class Comanda {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column(name = "idusuario")
     private long idUsuario;
+    @Column(name = "nomeusuario")
     private String nomeUsuario;
+    @Column(name = "telefoneusuario")
     private String telefoneUsuario;
     @OneToMany(mappedBy = "comanda")
     private ArrayList<Produto> produtos;

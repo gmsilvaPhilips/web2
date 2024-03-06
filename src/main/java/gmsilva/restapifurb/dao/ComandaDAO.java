@@ -12,6 +12,7 @@ public class ComandaDAO {
     @Autowired
     private ComandaRepository comandaRepo;
     public void cadastrarComanda(DadosCadastroComanda comanda) {
-       comandaRepo.save(new Comanda(comanda));
+        System.out.println(comanda);
+        comandaRepo.save(new Comanda(comanda));
     }
 }
