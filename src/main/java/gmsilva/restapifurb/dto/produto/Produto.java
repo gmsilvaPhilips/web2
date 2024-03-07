@@ -1,4 +1,5 @@
 package gmsilva.restapifurb.dto.produto;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import gmsilva.restapifurb.dto.comandaProduto.ComandaProduto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -14,10 +15,11 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Produto {
 @Id  @GeneratedValue(strategy = GenerationType.IDENTITY)
 private long id;
-    @OneToMany(mappedBy = "produto", cascade = CascadeType.ALL)
+@OneToMany(mappedBy = "produto", cascade = CascadeType.ALL)
 private List<ComandaProduto> comandaProdutos;
 @Column(name = "nome")
 private String nome;
@@ -28,4 +30,6 @@ public Produto(DadosCadastroProduto produto){
     this.nome = produto.nome();
     this.preco = produto.preco();
 }
+
+
 }

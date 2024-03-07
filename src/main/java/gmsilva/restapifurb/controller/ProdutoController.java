@@ -9,6 +9,7 @@ import jakarta.persistence.Embedded;
 import jakarta.validation.Valid;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -18,14 +19,9 @@ public class ProdutoController {
     @Autowired
     private ProdutoBO produtoBO;
     @PostMapping("/produtos")
-    public String registrarProduto(@Valid @RequestBody DadosCadastroProduto produto) {
-        produtoBO.cadastrarProduto(produto);
+    public ResponseEntity registrarProduto(@Valid @RequestBody DadosCadastroProduto produto) {
         System.out.println(produto);
-        return produto.toString();
-    }
-
-    public ResponseEntity deletarProduto(@Valid @RequestBody DadosCadastroProduto produto){
-
+        return produtoBO.cadastrarProduto(produto);
 
     }
 

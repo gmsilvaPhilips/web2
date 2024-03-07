@@ -48,6 +48,7 @@ public class Comanda {
 
 
     public static Comanda fromResultSet(Object[] resultSet) {
+
         Comanda comanda = new Comanda();
         Object[] innerArray = (Object[]) resultSet[0];
         System.out.println(innerArray[0]);
