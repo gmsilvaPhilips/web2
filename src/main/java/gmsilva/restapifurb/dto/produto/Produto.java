@@ -1,14 +1,10 @@
 package gmsilva.restapifurb.dto.produto;
-
-
-import gmsilva.restapifurb.dto.comanda.Comanda;
 import gmsilva.restapifurb.dto.comandaProduto.ComandaProduto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -21,7 +17,7 @@ import java.util.List;
 public class Produto {
 @Id  @GeneratedValue(strategy = GenerationType.IDENTITY)
 private long id;
-@OneToMany(mappedBy = "produto")
+    @OneToMany(mappedBy = "produto", cascade = CascadeType.ALL)
 private List<ComandaProduto> comandaProdutos;
 @Column(name = "nome")
 private String nome;
