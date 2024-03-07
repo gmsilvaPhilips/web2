@@ -1,6 +1,7 @@
 package gmsilva.restapifurb.dto.comanda;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import gmsilva.restapifurb.dto.comandaProduto.ComandaProduto;
 import gmsilva.restapifurb.dto.produto.DadosCadastroProduto;
@@ -29,6 +30,7 @@ public class Comanda {
     @Column(name = "telefoneusuario")
     private String telefoneUsuario;
     @OneToMany(mappedBy = "comanda", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<ComandaProduto> comandaProdutos;
     @Transient
     private List<DadosCadastroProduto> produtos;
