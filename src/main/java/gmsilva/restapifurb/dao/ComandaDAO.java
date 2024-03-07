@@ -48,11 +48,10 @@ public class ComandaDAO {
     }
 
     public ResponseEntity<Comanda> obterComanda(Long id) {
-        Optional<Comanda> comandaOptional = comandaRepo.findById(id);
+        Optional<Object[]> result = comandaRepo.findByIdWithProdutos(id);
 
-        if (comandaOptional.isPresent()) {
-            Comanda comanda = comandaOptional.get();
-            System.out.println(comanda.getProdutos());
+        if (result.isPresent()) {
+            Comanda comanda = Comanda.fromResultSet(result.get());
             return ResponseEntity.ok(comanda);
         } else {
             return ResponseEntity.notFound().build();

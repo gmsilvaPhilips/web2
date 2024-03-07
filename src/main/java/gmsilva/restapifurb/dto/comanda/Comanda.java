@@ -9,8 +9,11 @@ import gmsilva.restapifurb.dto.produto.Produto;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+
+import static java.lang.Double.parseDouble;
 
 @Table(name = "comandas")
 @Entity(name = "Comanda")
@@ -43,5 +46,31 @@ public class Comanda {
         this.produtos = comanda.produtos();
     }
 
+
+    public static Comanda fromResultSet(Object[] resultSet) {
+        Comanda comanda = new Comanda();
+        Object[] innerArray = (Object[]) resultSet[0];
+        System.out.println(innerArray[0]);
+
+
+        comanda.setId((Long) innerArray[0]);
+        comanda.setIdUsuario((Long) innerArray[1]);
+        comanda.setNomeUsuario((String) innerArray[2]);
+        comanda.setTelefoneUsuario((String) innerArray[3]);
+
+        List<DadosCadastroProduto> produtos = new ArrayList<>();
+        String[] nomesProdutos = ((String) innerArray[4]).split(",");
+        String[] precosProdutos = ((String) innerArray[5]).split(",");
+
+        for (int i = 0; i < nomesProdutos.length; i++) {
+            DadosCadastroProduto produto = new DadosCadastroProduto(nomesProdutos[i], new BigDecimal(Double.valueOf(precosProdutos[i])));
+            produtos.add(produto);
+        }
+
+
+        comanda.setProdutos(produtos);
+
+        return comanda;
+    }
 }
 

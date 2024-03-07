@@ -29,9 +29,7 @@ public class ComandaController {
 }
     @GetMapping("/comandas/{id}")
     public ResponseEntity<Comanda> obterComanda(@PathVariable Long id) {
-
         return comandaBO.ObterComanda(id);
-
+    }
 
 }
-    }
