@@ -17,7 +17,9 @@ import lombok.NoArgsConstructor;
 public class Usuario {
     @Id @GeneratedValue
     private Long id;
+    @Column(name = "nome")
     private String nome;
+    @Column(name = "telefone")
     private String telefone;
 
 

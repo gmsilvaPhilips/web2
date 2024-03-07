@@ -1,11 +1,13 @@
 package gmsilva.restapifurb.dto.comanda;
 
 
+import gmsilva.restapifurb.dto.comandaProduto.ComandaProduto;
 import gmsilva.restapifurb.dto.produto.Produto;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Table(name = "comandas")
 @Entity(name = "Comanda")
@@ -24,8 +26,7 @@ public class Comanda {
     @Column(name = "telefoneusuario")
     private String telefoneUsuario;
     @OneToMany(mappedBy = "comanda")
-    private ArrayList<Produto> produtos;
-
+    private List<ComandaProduto> comandaProdutos;
 
     public Comanda(DadosCadastroComanda comanda){
         this.idUsuario = comanda.idUsuario();
