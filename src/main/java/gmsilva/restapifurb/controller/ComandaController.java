@@ -4,6 +4,7 @@ import gmsilva.restapifurb.bo.ComandaBO;
 import gmsilva.restapifurb.dto.comanda.Comanda;
 import gmsilva.restapifurb.dto.comanda.DadosCadastroComanda;
 import jakarta.validation.Valid;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,4 +33,10 @@ public class ComandaController {
         return comandaBO.ObterComanda(id);
     }
 
+    @DeleteMapping("/comandas/{id}")
+    public ResponseEntity deletarComanda(@PathVariable Long id){
+        return comandaBO.deletarComanda(id);
+    }
 }
+
+

@@ -23,4 +23,10 @@ public class ProdutoController {
         System.out.println(produto);
         return produto.toString();
     }
+
+    public ResponseEntity deletarProduto(@Valid @RequestBody DadosCadastroProduto produto){
+
+
+    }
+
 }

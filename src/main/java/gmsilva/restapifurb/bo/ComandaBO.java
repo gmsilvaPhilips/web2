@@ -29,4 +29,8 @@ public class ComandaBO {
     public ResponseEntity<Comanda> ObterComanda(Long id) {
     return comandaDAO.obterComanda(id);
     }
+
+    public ResponseEntity deletarComanda(Long id) {
+    return  comandaDAO.deletarComanda(id);
+    }
 }

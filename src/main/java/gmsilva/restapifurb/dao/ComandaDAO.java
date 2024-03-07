@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Repository
@@ -58,4 +59,12 @@ public class ComandaDAO {
         }
     }
 
+        public ResponseEntity deletarComanda(Long id) {
+        if (comandaRepo.existsById(id)) {
+            comandaRepo.deleteById(id);
+            return ResponseEntity.ok().body(Map.of("success", Map.of("text", "comanda removida")));
+        } else {
+            return ResponseEntity.status(404).body(Map.of("error", Map.of("text", "Comanda não encontrada")));
+        }
+    }
 }
